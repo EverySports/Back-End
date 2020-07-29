@@ -120,4 +120,7 @@ hs_err_pid*
 ## ignoring target file
 target/
 
+### DB info ###
+web/WEB-INF/applicationConText.xml
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,java,java-web
