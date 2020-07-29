@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <mybatis-spring:scan base-package="com.everysports.mapper"/>
+    <context:component-scan base-package="com.everysports.service"/>
+
+    <!--    &lt;!&ndash; SQLSessionFactory &ndash;&gt;-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations"
+                  value="classpath:com/everysports/mapper/*.xml"/>
+    </bean>
+
+    <!--    &lt;!&ndash; MySQL dataSource &ndash;&gt;-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+<!--        <property name="url" value="jdbc:mysql://127.0.0.1:3306/Test?characterEncoding=UTF-8&amp;serverTimezone=UTC"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="1234"/>-->
+        <property name="url" value="jdbc:mysql://everysportsdb.cluster-cprqmdo6eszy.ap-northeast-2.rds.amazonaws.com/EverySports?characterEncoding=UTF-8&amp;serverTimezone=UTC"/>
+        <property name="username" value="everyadmin"/>
+        <property name="password" value="every0303!"/>
+
+    </bean>
+
+    <bean id="sqlSession"
+          class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0"
+                         ref="sqlSessionFactory"/>
+    </bean>
+</beans>
