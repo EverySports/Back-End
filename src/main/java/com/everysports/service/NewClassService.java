@@ -1,4 +1,9 @@
 package com.everysports.service;
 
-public class NewClassService {
+import com.everysports.domain.NewClassVO;
+
+import java.util.List;
+
+public interface NewClassService {
+    public List<NewClassVO> selectNewClass();
 }
