@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.everysports.mapper.NewClassMapper">
+
+    <select id="selectNewClass" resultType="com.everysports.domain.NewClassVO">
+        select eClass.class_Name, eClass.class_Price, eClass.class_Num, eTeacher.teacher_Name,
+               eClassAttach.uploadPath, eClassAttach.fileName
+        From eClass join eTeacher on eClass.teacher_ID = eTeacher.teacher_ID
+                    join eClassAttach on eClass.class_ID = eClassAttach.class_ID;
+    </select>
+
+</mapper>
