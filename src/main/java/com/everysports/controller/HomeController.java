@@ -7,17 +7,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/*")
+@RequestMapping("/")
 @Log4j
-public class controller {
+public class HomeController {
+
     @RequestMapping()
-    public String test2(){
-        return "Hello";
+    public String home(){
+        return "Wellcom!!";
     }
 
-    @GetMapping("test")
-    public @ResponseBody String test(){
-        return "Spring + Maven";
+    @GetMapping("hidden")
+    public @ResponseBody String hidden(){
+        log.trace("Hidden Test");
+        return "Success";
     }
 
 }
