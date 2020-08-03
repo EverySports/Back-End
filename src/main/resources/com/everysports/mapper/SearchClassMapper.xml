@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.everysports.mapper.SearchClassMapper">
+
+    <select id="selectSearchClass" resultType="com.everysports.domain.SearchClassVO">
+        select eClass.class_ID, eClass.class_Name, eClass.class_Num, eClass.class_Price,
+               eTeacher.teacher_Gender, eClassAttach.uploadPath, eClassAttach.fileName
+        From eClass join eTeacher on eClass.teacher_ID = eTeacher.teacher_ID
+                    join eClassAttach on eClass.class_ID = eClassAttach.class_ID
+        where eClass.class_Category = #{class_Category}
+        order by eClass.class_OpenDate
+        limit 10;
+    </select>
+
+</mapper>
