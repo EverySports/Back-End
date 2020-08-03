@@ -5,10 +5,12 @@
 <mapper namespace="com.everysports.mapper.NewClassMapper">
 
     <select id="selectNewClass" resultType="com.everysports.domain.NewClassVO">
-        select eClass.class_Name, eClass.class_Price, eClass.class_Num, eTeacher.teacher_Name,
+        select eClass.class_Name, eClass.class_Price, eClass.class_OpenDate, eTeacher.teacher_Name,
                eClassAttach.uploadPath, eClassAttach.fileName
         From eClass join eTeacher on eClass.teacher_ID = eTeacher.teacher_ID
-                    join eClassAttach on eClass.class_ID = eClassAttach.class_ID;
+                    join eClassAttach on eClass.class_ID = eClassAttach.class_ID
+        order by eClass.class_OpenDate
+        LIMIT 5;
     </select>
 
 </mapper>
