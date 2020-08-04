@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.everysports.mapper.TeacherInfoMapper">
+
+    <select id="selectTeacher" resultType="com.everysports.domain.TeacherVO">
+        Select eTeacher.teacher_Name, eTeacher.teacher_Email, eTeacher.teacher_Gender, eTeacher.teacher_Content,
+               sum(eClass.class_Num) as Class_SumNum, eProfile.uploadPath, eProfile.fileName
+        From eTeacher join eClass on eTeacher.teacher_ID = eClass.teacher_ID
+                      join eAll on eTeacher.teacher_ID = eAll.all_ID
+                      join eProfile on eAll.all_ID = eProfile.all_ID
+        where eTeacher.teacher_ID = #{teacher_ID};
+    </select>
+
+    <select id="selectClass" resultType="com.everysports.domain.ClassVO">
+        Select eClass.class_ID, eClass.class_Name, eClass.class_Num, eClass.class_Price, eClassAttach.uploadPath, eClassAttach.fileName
+        from eClass join eClassAttach on eClass.class_ID = eClassAttach.class_ID
+        where eClass.teacher_ID = #{teacher_ID}
+        limit 5;
+    </select>
+
+    <select id="selectReview" resultType="com.everysports.domain.ReviewVO">
+        select eReview.user_ID, eReview.review_Title, eReview.review_Content, eReview.review_CreatedAt
+        from eReview join eClass on eClass.class_ID = eReview.class_ID
+                     join eTeacher on eClass.teacher_ID = eTeacher.teacher_ID
+        where eTeacher.teacher_ID = #{teacher_ID}
+        limit 5;
+    </select>
+
+</mapper>

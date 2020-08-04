@@ -1,13 +1,13 @@
-package com.everysports.domain.ReviewVO;
+package com.everysports.domain;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class ReviewVO {
     private Long user_ID;
     private String review_Title;
     private String review_Content;
-    private LocalDate review_CreatedAt;
+    private Date review_CreatedAt;
 }
