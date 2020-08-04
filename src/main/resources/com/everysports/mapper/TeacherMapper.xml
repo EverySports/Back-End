@@ -5,7 +5,7 @@
 <mapper namespace="com.everysports.mapper.TeacherMapper">
 
     <select id="selectTeacher" resultType="com.everysports.domain.TeacherVO">
-        select * from EverySports.eTeacher;
+        Select * From EverySports.eTeacher;
     </select>
 
 </mapper>

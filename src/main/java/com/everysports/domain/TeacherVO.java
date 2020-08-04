@@ -6,9 +6,9 @@ import java.util.Date;
 
 @Data
 public class TeacherVO {
-    private Long teacher_ID;
-    private String teacher_Email;
+    private String teacher_ID;
     private String teacher_Name;
+    private String teacher_Email;
     private String teacher_Gender;
     private Date teacher_Birthday;
     private String teacher_Phone;

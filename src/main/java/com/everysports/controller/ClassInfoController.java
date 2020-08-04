@@ -1,7 +1,7 @@
 package com.everysports.controller;
 
-import com.everysports.domain.TeacherVO;
-import com.everysports.service.TeacherService;
+import com.everysports.domain.ClassInfoVO;
+import com.everysports.service.ClassInfoService;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/teacher/*")
+@RequestMapping("/classinfo/*")
 @Log4j
-public class TeacherController {
-    @Setter(onMethod_=@Autowired)
-    private TeacherService teacherService;
+public class ClassInfoController {
+    @Setter(onMethod_ = @Autowired)
+    private ClassInfoService classInfoService;
 
-    @GetMapping(value = "/",
-            produces = {
-                    MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public ResponseEntity<List<TeacherVO>> selectUser(){
-        return new ResponseEntity<>(teacherService.selectTeacher(), HttpStatus.OK);
+    @GetMapping(value = "/{class_ID}", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+    public ResponseEntity<ClassInfoVO> selectClassInfo(@PathVariable Long class_ID){
+        return new ResponseEntity<>(classInfoService.selectClassInfo(class_ID), HttpStatus.OK);
     }
-
 }

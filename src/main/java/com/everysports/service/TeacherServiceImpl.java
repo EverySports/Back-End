@@ -13,6 +13,7 @@ public class TeacherServiceImpl implements TeacherService{
     @Setter(onMethod_=@Autowired)
     private TeacherMapper teacherMapper;
 
+    @Override
     public List<TeacherVO> selectTeacher() {
         return teacherMapper.selectTeacher();
     }
