@@ -1,7 +1,5 @@
 package com.everysports.service;
 
-import com.everysports.domain.ClassVO;
-import com.everysports.domain.ReviewVO;
 import com.everysports.domain.TeacherVO;
 import com.everysports.mapper.TeacherMapper;
 import lombok.Setter;
