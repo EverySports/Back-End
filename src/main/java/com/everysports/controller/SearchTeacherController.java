@@ -24,7 +24,6 @@ public class SearchTeacherController {
 
     @GetMapping(value = "/{class_Category}",
             produces = {
-                    MediaType.APPLICATION_XML_VALUE,
                     MediaType.APPLICATION_JSON_UTF8_VALUE
             })
     public ResponseEntity<List<SearchTeacherVO>> selectSearchClass(@PathVariable("class_Category") Long class_Category){
