@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.everysports.mapper.SearchTeacherMapper">
+
+    <select id="selectSearchTeacher" resultType="com.everysports.domain.SearchTeacherVO">
+        select eTeacher.teacher_ID, eTeacher.teacher_Name, eTeacher.teacher_Gender, sum(eClass.class_Num) as class_SumNum,
+               eProfile.uploadPath, eProfile.fileName
+        From eClass join eTeacher on eClass.teacher_ID = eTeacher.teacher_ID
+                    join eAll on eTeacher.teacher_ID = eAll.all_ID
+                    join eProfile on eAll.all_ID = eProfile.all_ID
+        where eClass.class_Category = #{class_Category}
+        order by eClass.class_Num
+        limit 10;
+    </select>
+
+</mapper>
