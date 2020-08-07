@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.everysports.mapper.PaymentMapper">
+
+    <select id="selectTeacherSchedule" resultType="com.everysports.domain.TeacherScheduleVO">
+        select eTeacherSchedule.day
+        from eTeacher join eTeacherSchedule on eTeacher.teacher_ID = eTeacherSchedule.teacher_ID
+        where eTeacherSchedule.teacher_ID = #{teacher_ID};
+    </select>
+
+    <select id="selectUserSchedule" resultType="com.everysports.domain.UserScheduleVO">
+        select eClassSchedule.day
+        from eClass join eUserClass on eClass.class_ID = eUserClass.class_ID
+                    join eClassSchedule on eUserClass.class_ID = eClassSchedule.class_ID and eUserClass.user_ID = eClassSchedule.user_ID
+        where eClass.class_ID = #{class_ID};
+    </select>
+</mapper>
